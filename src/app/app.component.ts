@@ -1,9 +1,13 @@
-import {Component} from '@angular/core';
+import {Component, ViewEncapsulation} from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  encapsulation: ViewEncapsulation.Native,
+  styles: [`
+    h1 {color: blue}
+  `],
   template: `
-    <h1>List</h1>
+    <h1 class="active">List</h1>
 
     <input type="text"
            #item
