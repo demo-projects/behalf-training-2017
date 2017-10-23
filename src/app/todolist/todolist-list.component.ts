@@ -1,19 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {Item} from './item';
 
 @Component({
   selector: 'app-todolist-list',
   template: `
     <ul class="todo-list">
-      <app-todolist-item></app-todolist-item>
+      <app-todolist-item
+          *ngFor="let i of items"
+          [item]="i"></app-todolist-item>
     </ul>
   `,
-  styles: []
 })
-export class TodolistListComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+export class TodolistListComponent {
+  @Input() items: Item[];
 }

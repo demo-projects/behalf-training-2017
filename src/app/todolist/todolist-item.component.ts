@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import {Item} from './item';
 
 @Component({
   selector: 'app-todolist-item',
@@ -6,20 +7,17 @@ import { Component, OnInit } from '@angular/core';
     <li>
       <div class="view">
         <input class="toggle"
+               [checked]="item.completed"
                type="checkbox">
-        <label>Todo Title</label>
+        <label>{{ item.title }}</label>
         <button class="destroy"></button>
       </div>
       <input class="edit">
     </li>
   `,
-  styles: []
 })
-export class TodolistItemComponent implements OnInit {
+export class TodolistItemComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  @Input() item: Item;
 
 }
