@@ -3,9 +3,11 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-todolist',
   template: `
-    <p>
-      todolist works!
-    </p>
+    <section class="todoapp">
+      <app-todolist-header></app-todolist-header>
+      <app-todolist-main></app-todolist-main>
+      <app-todolist-footer></app-todolist-footer>
+    </section>
   `,
   styles: []
 })
