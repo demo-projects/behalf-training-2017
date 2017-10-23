@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges} from '@angular/core';
 import {Item} from './item';
 import {TodolistService} from './todolist.service';
 
@@ -20,15 +20,21 @@ import {TodolistService} from './todolist.service';
     </li>
   `,
 })
-export class TodolistItemComponent {
+export class TodolistItemComponent implements OnChanges, OnInit, OnDestroy{
 
   @Input() item: Item;
-  public list: TodolistService;
 
-  constructor(list: TodolistService) {
-    this.list = list;
+  constructor(public list: TodolistService) {}
 
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
   }
 
+  ngOnInit(): void {
+    console.log(this.item);
+  }
 
+  ngOnDestroy(): void {
+    console.log('component destroyed!');
+  }
 }

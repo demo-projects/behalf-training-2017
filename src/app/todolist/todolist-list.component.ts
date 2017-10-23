@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
 import {Item} from './item';
 
 @Component({
@@ -11,6 +11,10 @@ import {Item} from './item';
     </ul>
   `,
 })
-export class TodolistListComponent {
+export class TodolistListComponent implements OnChanges{
   @Input() items: Item[];
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
 }

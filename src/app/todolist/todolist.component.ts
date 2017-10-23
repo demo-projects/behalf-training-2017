@@ -13,8 +13,8 @@ import {TodolistService} from './todolist.service';
         <app-todolist-list [items]="todolist.items"></app-todolist-list>
       </app-todolist-main>
 
-      <!-- todo: pass value to the counter and catch 'clearAll' -->
       <app-todolist-footer></app-todolist-footer>
+
     </section>
   `,
   styles   : []
