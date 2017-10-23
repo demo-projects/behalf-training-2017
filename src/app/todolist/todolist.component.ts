@@ -5,14 +5,13 @@ import {TodolistService} from './todolist.service';
   selector: 'app-todolist',
   template: `
     <section class="todoapp">
-
       <app-todolist-header [title]="title"
                            (onAdd)="todolist.addItem($event)"></app-todolist-header>
-
       <app-todolist-main>
         <app-todolist-list [items]="todolist.items"></app-todolist-list>
       </app-todolist-main>
 
+      <!-- todo: pass value to the counter and catch 'clearAll' -->
       <app-todolist-footer></app-todolist-footer>
     </section>
   `,
