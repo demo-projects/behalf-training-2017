@@ -3,6 +3,7 @@ import {TodolistService} from './todolist.service';
 
 @Component({
   selector: 'app-todolist',
+  providers: [TodolistService],
   template: `
     <section class="todoapp">
       <app-todolist-header [title]="title"
@@ -22,8 +23,8 @@ export class TodolistComponent implements OnInit {
   public todolist: TodolistService;
   public title: string;
 
-  constructor() {
-    this.todolist = new TodolistService();
+  constructor(list: TodolistService) {
+    this.todolist = list;
     this.title = 'MyAPP';
   }
 

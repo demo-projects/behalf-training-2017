@@ -1,5 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Item} from './item';
+import {TodolistService} from './todolist.service';
 
 @Component({
   selector: 'app-todolist-item',
@@ -11,9 +12,9 @@ import {Item} from './item';
                [checked]="item.completed"
                type="checkbox">
 
-        <label>{{  item.title }}</label>
+        <label>{{  item.title | up }}</label>
 
-        <button class="destroy"></button>
+        <button (click)="list.removeItem(item)" class="destroy"></button>
       </div>
       <input class="edit">
     </li>
@@ -22,6 +23,12 @@ import {Item} from './item';
 export class TodolistItemComponent {
 
   @Input() item: Item;
+  public list: TodolistService;
+
+  constructor(list: TodolistService) {
+    this.list = list;
+
+  }
 
 
 }
