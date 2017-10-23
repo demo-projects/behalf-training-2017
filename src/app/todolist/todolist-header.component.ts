@@ -1,22 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 @Component({
   selector: 'app-todolist-header',
   template: `
     <header class="header">
-      <h1>todos</h1>
+      <h1>{{ title }}</h1>
       <input class="new-todo"
+             type="text"
+             (keydown.enter)="onAdd.emit($event.target.value)"
              placeholder="What needs to be done?"
              autofocus>
     </header>
-  `,
-  styles: []
+  `
 })
-export class TodolistHeaderComponent implements OnInit {
+export class TodolistHeaderComponent  {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  @Input() title: string;
+  @Output() onAdd = new EventEmitter<string>();
 }
