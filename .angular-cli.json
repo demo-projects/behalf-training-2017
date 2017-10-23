@@ -59,7 +59,10 @@
       "spec": false
     },
     "component": {
-      
+      "inlineTemplate": true,
+      "inlineStyle": true,
+      "spec": false,
+      "flat": true
     }
   }
 }
