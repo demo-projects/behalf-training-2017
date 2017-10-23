@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
     <section class="main">
       <input class="toggle-all"
              type="checkbox">
-    <app-todolist-list></app-todolist-list>
+    <ng-content></ng-content>
     </section>
   `,
   styles: []

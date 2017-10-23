@@ -5,7 +5,11 @@ import { Component, OnInit } from '@angular/core';
   template: `
     <section class="todoapp">
       <app-todolist-header></app-todolist-header>
-      <app-todolist-main></app-todolist-main>
+
+      <app-todolist-main>
+        <app-todolist-list></app-todolist-list>
+      </app-todolist-main>
+
       <app-todolist-footer></app-todolist-footer>
     </section>
   `,
