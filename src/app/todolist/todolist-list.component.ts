@@ -1,8 +1,9 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input, OnChanges, SimpleChanges, ChangeDetectionStrategy} from '@angular/core';
 import {Item} from './item';
 
 @Component({
   selector: 'app-todolist-list',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <ul class="todo-list">
       <app-todolist-item
@@ -12,7 +13,7 @@ import {Item} from './item';
   `,
 })
 export class TodolistListComponent implements OnChanges{
-  @Input() items: Item[];
+    @Input() items: Item[];
 
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);

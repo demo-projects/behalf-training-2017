@@ -23,8 +23,8 @@ export class TodolistService {
     let params = new HttpParams();
     params     = params.append('f', 'ffff');
 
-    http.get<Item[]>('https://jsonplaceholder.typicode.com/todos', {headers, params})
-        .subscribe(response => this._items = response);
+    // http.get<Item[]>('https://jsonplaceholder.typicode.com/todos', {headers, params})
+    //     .subscribe(response => this._items = response);
   }
 
   public get items(): Item[] {
@@ -32,8 +32,8 @@ export class TodolistService {
   }
 
   public addItem(title: string): void {
-    this.items.push(new Item(title));
-    // this._items = [...this.items, new Item(title)];
+    // this.items.push(new Item(title));
+    this._items = [...this.items, new Item(title)];
     this.logger.log('item added');
   }
 

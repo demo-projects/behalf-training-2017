@@ -27,11 +27,11 @@ export class TodolistItemComponent implements OnChanges, OnInit, OnDestroy{
   constructor(public list: TodolistService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
+    // console.log(changes);
   }
 
   ngOnInit(): void {
-    console.log(this.item);
+    // console.log(this.item);
   }
 
   ngOnDestroy(): void {
