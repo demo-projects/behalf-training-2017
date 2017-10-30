@@ -1,15 +1,30 @@
-import {Item} from './item';
-import {LoggerService} from '../utils/logger.service';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
+import {LoggerService} from '../utils/logger.service';
+import {Item} from './item';
+
 
 @Injectable()
 export class TodolistService {
+
   private _items: Item[];
   private logger: LoggerService;
+  private _http: HttpClient;
 
-  constructor(logger: LoggerService) {
+  constructor(logger: LoggerService, http: HttpClient) {
     this.logger = logger;
+    this._http  = http;
     this._items = [];
+
+    // example for fetching data from the server
+    let headers = new HttpHeaders();
+    headers     = headers.append('x', 'ttt');
+
+    let params = new HttpParams();
+    params     = params.append('f', 'ffff');
+
+    http.get<Item[]>('https://jsonplaceholder.typicode.com/todos', {headers, params})
+        .subscribe(response => this._items = response);
   }
 
   public get items(): Item[] {
