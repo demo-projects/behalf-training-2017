@@ -13,7 +13,8 @@ import {TodolistService} from './todolist.service';
         <app-todolist-list [items]="todolist.items"></app-todolist-list>
       </app-todolist-main>
 
-      <app-todolist-footer></app-todolist-footer>
+      <app-todolist-footer [count]="todolist.items | countBy:'completed':false">
+      </app-todolist-footer>
 
     </section>
   `,

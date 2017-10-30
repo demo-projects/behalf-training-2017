@@ -6,6 +6,6 @@ export class Item {
   constructor(title: string) {
     this.title     = title;
     this.completed = false;
-    this.created   = new Date;
+    this.created   = new Date();
   }
 }
