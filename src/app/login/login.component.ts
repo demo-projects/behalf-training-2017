@@ -3,9 +3,8 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-login',
   template: `
-    <p>
-      login works!
-    </p>
+    <app-sign-in></app-sign-in>
+    <app-recover></app-recover>
   `,
   styles: []
 })

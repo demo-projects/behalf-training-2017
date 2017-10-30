@@ -3,9 +3,11 @@ import {Component} from '@angular/core';
 @Component({
   selector: 'app-root',
   template: `
-    <app-login></app-login>
-    <app-todolist></app-todolist>
-    <app-history></app-history>
+    <a routerLink="login">login</a>
+    <a routerLink="list">list</a>
+    <a routerLink="log">history</a>
+
+    <router-outlet></router-outlet>
   `
 })
 
