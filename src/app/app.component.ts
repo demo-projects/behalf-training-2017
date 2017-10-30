@@ -1,21 +1,32 @@
-import {Component} from '@angular/core';
+import {Component, ViewChild, ElementRef, OnInit, Renderer2} from '@angular/core';
+import {TabComponent} from './utils/tab.component';
+import {TabsComponent} from './utils/tabs.component';
 
 @Component({
   selector: 'app-root',
   template: `
-    <h1>Hello Directives</h1>
+    <h1 #title
+        appMarker="red">Hello Directives</h1>
 
-    <input type="checkbox" (change)="flag = !flag">
-
-    <h2 *appIf="flag">Content</h2>
-
-    <!--<ng-template [appIf]="flag">-->
-      <!--<h2>Content</h2>-->
-    <!--</ng-template>-->
+    <app-tabs></app-tabs>
 
   `
 })
 
-export class AppComponent {
-    flag = true;
+export class AppComponent implements OnInit {
+
+  @ViewChild('title')
+  public title: ElementRef;
+
+  @ViewChild(TabsComponent)
+  public tabs;
+
+  constructor(private R: Renderer2) {}
+
+  ngOnInit(): void {
+    this.tabs.next();
+    this.R.listen(this.title.nativeElement, 'mouseenter', () => {
+      this.R.setStyle(this.title.nativeElement, 'backgroundColor', 'red');
+    });
+  }
 }
