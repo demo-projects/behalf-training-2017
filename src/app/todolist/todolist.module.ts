@@ -8,16 +8,10 @@ import {TodolistItemComponent} from './todolist-item.component';
 import {TodolistListComponent} from './todolist-list.component';
 import {TodolistMainComponent} from './todolist-main.component';
 import {TodolistComponent} from './todolist.component';
-import {TodolistService} from './todolist.service';
+import {StoreModule} from '../store/store.module';
 
 @NgModule({
-  imports     : [CommonModule, UtilsModule, HttpClientModule],
-  providers   : [
-    {
-      provide : TodolistService,
-      useClass: TodolistService
-    }
-  ],
+  imports     : [CommonModule, UtilsModule, HttpClientModule, StoreModule],
   declarations: [
     TodolistComponent,
     TodolistHeaderComponent,

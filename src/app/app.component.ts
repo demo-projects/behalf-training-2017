@@ -7,10 +7,13 @@ import {Component} from '@angular/core';
     <a routerLink="list">list</a>
     <a routerLink="log">history</a>
 
+   
     <!--routing placeholder-->
     <router-outlet></router-outlet>
   `
 })
 
 export class AppComponent {
+
+
 }

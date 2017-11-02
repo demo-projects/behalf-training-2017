@@ -1,19 +1,10 @@
-import {Component, Input, OnInit, OnDestroy, OnChanges, SimpleChanges} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Item} from './item';
-import {TodolistService} from './todolist.service';
-
-
-abstract class RemoveList {
-  removeItem(item: Item) {}
-}
+import {ListActionsService} from '../store/actions/list-actions.service';
 
 
 @Component({
   selector : 'app-todolist-item',
-  providers: [{
-    provide    : RemoveList,
-    useExisting: TodolistService
-  }],
   template : `
     <li [ngClass]="{ completed: item.completed }">
       <div class="view">
@@ -24,30 +15,18 @@ abstract class RemoveList {
 
         <label>{{ item.title | up }}</label>
 
-        <button (click)="list.removeItem(item)"
+        <button (click)="listActions.removeItem(item)"
                 class="destroy"></button>
       </div>
       <input class="edit">
     </li>
   `,
 })
-export class TodolistItemComponent implements OnChanges, OnInit, OnDestroy {
+export class TodolistItemComponent {
 
   @Input() item: Item;
 
-  constructor(public list: RemoveList) {
+  constructor(public listActions: ListActionsService) {
 
-  }
-
-  ngOnChanges(changes: SimpleChanges): void {
-    // console.log(changes);
-  }
-
-  ngOnInit(): void {
-    // console.log(this.item);
-  }
-
-  ngOnDestroy(): void {
-    console.log('component destroyed!');
   }
 }
