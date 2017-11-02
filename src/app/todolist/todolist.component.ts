@@ -1,14 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, SkipSelf, Self, Optional} from '@angular/core';
 import {LoggerService} from '../utils/logger.service';
 import {TodolistService} from './todolist.service';
 
 @Component({
   selector : 'app-todolist',
-  providers: [TodolistService],
   template : `
     <section class="todoapp">
       <app-todolist-header [title]="title"
-                           (onAdd)="todolist.addItem($event)"></app-todolist-header>
+                           (onAdd)="addItem($event)"></app-todolist-header>
       <app-todolist-main>
         <app-todolist-list [items]="todolist.items"></app-todolist-list>
       </app-todolist-main>
@@ -28,6 +27,10 @@ export class TodolistComponent {
   constructor(list: TodolistService) {
     this.todolist = list;
     this.title    = 'MyAPP';
+  }
+
+  addItem(title: string) {
+    this.todolist.addItem(title);
   }
 
 }
