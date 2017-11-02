@@ -1,4 +1,4 @@
-import {Component, Input, EventEmitter, Output} from '@angular/core';
+import {Component, Input, EventEmitter, Output, AfterViewChecked, ChangeDetectorRef} from '@angular/core';
 
 @Component({
   selector: 'app-todolist-header',
@@ -13,8 +13,25 @@ import {Component, Input, EventEmitter, Output} from '@angular/core';
     </header>
   `
 })
-export class TodolistHeaderComponent  {
+export class TodolistHeaderComponent implements AfterViewChecked{
 
   @Input() title: string;
   @Output() onAdd = new EventEmitter<string>();
+  public cd: ChangeDetectorRef;
+
+  constructor(cd: ChangeDetectorRef) {
+    this.cd = cd;
+
+  }
+
+  ngAfterViewChecked(): void {
+    this.cd.detach();
+    // this.cd.reattach();
+    // this.cd.detectChanges();
+  }
+
+// todo: will throw error!!
+  // ngAfterViewChecked(): void {
+  //   this.title = "NIR";
+  // }
 }

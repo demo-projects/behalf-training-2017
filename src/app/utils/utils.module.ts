@@ -11,20 +11,8 @@ import {HttpClient} from '@angular/common/http';
   imports     : [CommonModule],
   declarations: [UpPipe, CountByPipe],
   exports     : [UpPipe, CountByPipe],
-  providers   : [
-      LoggerService,
-    {
-      provide: BhHttp,
-      useFactory: (http) => {
-        return new BhHttp('NIR', http);
-      },
-      deps: [HttpClient]
-    }
-  ]
+  providers   : [LoggerService]
 })
 export class UtilsModule {
 
-  constructor(bhhttp: BhHttp) {
-    console.log(bhhttp.get());
-  }
 }
